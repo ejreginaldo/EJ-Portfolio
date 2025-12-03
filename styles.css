@@ -610,10 +610,11 @@ section {
 /* ============================================
    Skills Section
    ============================================ */
-.skills-grid {
+.skills-categories {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    margin-top: 50px;
 }
 
 .skill-category {
@@ -626,45 +627,64 @@ section {
 
 .skill-category:hover {
     border-color: rgba(0, 212, 170, 0.3);
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .category-title {
     font-family: var(--font-heading);
     font-size: 1.1rem;
     font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 25px;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.category-logos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 15px;
+}
+
+.skill-logo {
+    background: var(--bg-tertiary);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    padding: 15px 10px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    color: var(--text-primary);
+    gap: 8px;
+    transition: all var(--transition-medium);
+    cursor: default;
 }
 
-.category-title svg {
-    color: var(--accent);
+.skill-logo:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-.skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+.skill-logo svg {
+    width: 36px;
+    height: 36px;
+    transition: transform var(--transition-fast);
 }
 
-.skill-tag {
-    background: rgba(0, 212, 170, 0.1);
-    color: var(--accent);
-    padding: 8px 16px;
-    border-radius: var(--radius-xl);
-    font-size: 0.9rem;
+.skill-logo:hover svg {
+    transform: scale(1.15);
+}
+
+.skill-logo span {
+    font-size: 0.7rem;
     font-weight: 500;
-    border: 1px solid rgba(0, 212, 170, 0.2);
-    transition: all var(--transition-fast);
+    color: var(--text-secondary);
+    text-align: center;
+    transition: color var(--transition-fast);
 }
 
-.skill-tag:hover {
-    background: var(--accent);
-    color: var(--bg-primary);
+.skill-logo:hover span {
+    color: var(--accent);
 }
 
 /* ============================================
@@ -810,6 +830,163 @@ section {
     padding: 4px 12px;
     border-radius: var(--radius-sm);
     font-size: 0.8rem;
+}
+
+.project-awards {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.award {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 212, 170, 0.1);
+    border: 1px solid rgba(0, 212, 170, 0.25);
+    padding: 5px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+.award svg {
+    color: var(--accent);
+    flex-shrink: 0;
+    opacity: 0.8;
+}
+
+.award-year {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-left: auto;
+}
+
+/* ============================================
+   Contact Section
+   ============================================ */
+/* ============================================
+   Certificates Section
+   ============================================ */
+.certificates {
+    background: var(--bg-secondary);
+}
+
+.certificates-tagline {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-top: 15px;
+}
+
+.carousel-wrapper {
+    position: relative;
+    max-width: 700px;
+    margin: 50px auto 0;
+}
+
+.carousel {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 4/3;
+}
+
+.carousel-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: scale(0.95);
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: var(--bg-tertiary);
+    padding: 20px;
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+    color: var(--text-primary);
+    font-weight: 500;
+    text-align: center;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: var(--accent);
+    color: var(--bg-primary);
+    border-color: var(--accent);
+}
+
+.carousel-btn.prev {
+    left: -25px;
+}
+
+.carousel-btn.next {
+    right: -25px;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg-tertiary);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.carousel-dot:hover {
+    border-color: var(--accent);
+}
+
+.carousel-dot.active {
+    background: var(--accent);
+    border-color: var(--accent);
 }
 
 /* ============================================
@@ -1001,8 +1178,9 @@ section {
         gap: 20px;
     }
     
-    .skills-grid {
+    .skills-categories {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     .projects-grid {
@@ -1013,9 +1191,26 @@ section {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    .carousel-btn.prev {
+        left: 10px;
+    }
+    
+    .carousel-btn.next {
+        right: 10px;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
     .about-details {
         grid-template-columns: 1fr;
         gap: 15px;
+    }
+    
+    .category-logos {
+        grid-template-columns: repeat(3, 1fr);
     }
     
     .footer-content {
@@ -1053,6 +1248,14 @@ section {
     
     .contact-cta p {
         font-size: 1.1rem;
+    }
+    
+    .category-logos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .skill-category {
+        padding: 20px;
     }
 }
 
