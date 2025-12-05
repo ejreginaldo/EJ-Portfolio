@@ -1,7 +1,3 @@
-/**
- * EJ Portfolio - Interactive Features
- */
-
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all features
     initCursorGlow();
@@ -170,99 +166,6 @@ function initNavbarScroll() {
         }
 
         lastScroll = currentScroll;
-    });
-}
-
-/**
- * Certificate Carousel
- */
-function initCertificateCarousel() {
-    const carousel = document.querySelector('.carousel');
-    if (!carousel) return;
-    
-    const slides = carousel.querySelectorAll('.carousel-slide');
-    const prevBtn = document.querySelector('.carousel-btn.prev');
-    const nextBtn = document.querySelector('.carousel-btn.next');
-    const dotsContainer = document.querySelector('.carousel-dots');
-    
-    let currentIndex = 0;
-    let autoPlayInterval;
-    const autoPlayDelay = 4000; // 4 seconds
-    
-    // Create dots
-    slides.forEach((_, index) => {
-        const dot = document.createElement('button');
-        dot.classList.add('carousel-dot');
-        if (index === 0) dot.classList.add('active');
-        dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
-        dot.addEventListener('click', () => goToSlide(index));
-        dotsContainer.appendChild(dot);
-    });
-    
-    const dots = dotsContainer.querySelectorAll('.carousel-dot');
-    
-    function goToSlide(index) {
-        slides[currentIndex].classList.remove('active');
-        dots[currentIndex].classList.remove('active');
-        
-        currentIndex = index;
-        if (currentIndex >= slides.length) currentIndex = 0;
-        if (currentIndex < 0) currentIndex = slides.length - 1;
-        
-        slides[currentIndex].classList.add('active');
-        dots[currentIndex].classList.add('active');
-    }
-    
-    function nextSlide() {
-        goToSlide(currentIndex + 1);
-    }
-    
-    function prevSlide() {
-        goToSlide(currentIndex - 1);
-    }
-    
-    // Event listeners
-    if (prevBtn) prevBtn.addEventListener('click', () => {
-        prevSlide();
-        resetAutoPlay();
-    });
-    
-    if (nextBtn) nextBtn.addEventListener('click', () => {
-        nextSlide();
-        resetAutoPlay();
-    });
-    
-    // Auto-play
-    function startAutoPlay() {
-        autoPlayInterval = setInterval(nextSlide, autoPlayDelay);
-    }
-    
-    function resetAutoPlay() {
-        clearInterval(autoPlayInterval);
-        startAutoPlay();
-    }
-    
-    // Pause on hover
-    carousel.addEventListener('mouseenter', () => {
-        clearInterval(autoPlayInterval);
-    });
-    
-    carousel.addEventListener('mouseleave', () => {
-        startAutoPlay();
-    });
-    
-    // Start auto-play
-    startAutoPlay();
-    
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            prevSlide();
-            resetAutoPlay();
-        } else if (e.key === 'ArrowRight') {
-            nextSlide();
-            resetAutoPlay();
-        }
     });
 }
 
