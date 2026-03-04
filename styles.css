@@ -22,7 +22,7 @@
     --font-body: 'Outfit', sans-serif;
     
     /* Spacing */
-    --section-padding: clamp(80px, 12vw, 140px);
+    --section-padding: clamp(60px, 8vw, 100px);
     --container-width: 1200px;
     
     /* Transitions */
@@ -46,7 +46,6 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
 }
 
 body {

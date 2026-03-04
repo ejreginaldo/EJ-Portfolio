@@ -124,9 +124,11 @@ function initSmoothScroll() {
             const target = document.querySelector(this.getAttribute('href'));
             
             if (target) {
-                const headerOffset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                const navHeight = 70;
+                const sectionHeader = target.querySelector('.section-header');
+                const scrollTarget = sectionHeader || target;
+                const elementPosition = scrollTarget.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - navHeight - 20;
 
                 window.scrollTo({
                     top: offsetPosition,
